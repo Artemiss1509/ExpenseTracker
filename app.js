@@ -1,5 +1,5 @@
 const express = require('express')
-const db = require('./utils/DB-connection')
+const connectToDatabase = require('./utils/DB-connection')
 const Expense = require('./models/expenseDb')
 const expenseRoutes = require('./routes/expenseRoutes')
 const cors = require('cors')
@@ -10,11 +10,9 @@ app.use(express.json())
 
 app.use('/expense',expenseRoutes)
 
-db.sync({alter:true}).then(()=>{
-    console.log('Database is connected')
-    app.listen(3000,()=>{
-        console.log('Server is running on port 3000')
-    })
-}).catch((err)=>{
-    console.log(err)
+
+app.listen(3000,async ()=>{
+    console.log('Server is running on port 3000')
+    await connectToDatabase();
 })
+
