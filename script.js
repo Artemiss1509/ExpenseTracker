@@ -38,7 +38,7 @@ function display(data) {
     li.innerHTML = `Paid ${data.amount} for ${data.name}. Comes under the category: ${data.category}`
 
     delBtn.textContent = 'Delete'
-    delBtn.addEventListener('click', () => deleteData(li,data._id));
+    delBtn.addEventListener('click', () => deleteData(li,data.id));
 
     li.appendChild(beak)
     li.appendChild(delBtn)
