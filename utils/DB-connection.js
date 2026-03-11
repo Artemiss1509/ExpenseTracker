@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
-dotenv.config({path: './utils/.env.local'})
+dotenv.config({path: './utils/.env'})
 
 const DB_URI = process.env.DB_URI;
 
