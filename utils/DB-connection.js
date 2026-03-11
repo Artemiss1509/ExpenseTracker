@@ -1,17 +1,18 @@
-const {Sequelize} = require('sequelize')
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
-const sequelize = new Sequelize('testDB','root','Artemiss1509',{
-    host: 'localhost',
-    dialect: 'mysql'
-});
+dotenv.config({path: './utils/.env.local'})
 
-(async ()=>{ try {
-    await sequelize.authenticate()
-    console.log('Connection to the Database is successfull')
+const DB_URI = process.env.DB_URI;
 
-} catch (error) {
-    console.log(error)
-}})();
+const connectToDatabase = async ()=>{
+    try {
+        await mongoose.connect(DB_URI);
+        console.log(`Connected to database in DEV mode`)
+    } catch (error) {
+        console.log('Error connecting to DB:', error)
+        process.exit(1);
+    }
+}
 
-
-module.exports=sequelize;
+module.exports = connectToDatabase;
