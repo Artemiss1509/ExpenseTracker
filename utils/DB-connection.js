@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
-const DB_URI = "mongodb+srv://rohansunil32_db_user:JIeKSb84EmE3MOXa@subcluster.ahakprt.mongodb.net/?appName=SubCluster"
+const dotenv = require('dotenv');
+
+dotenv.config({path: './utils/.env.local'})
+
+const DB_URI = process.env.DB_URI;
 
 const connectToDatabase = async ()=>{
     try {
